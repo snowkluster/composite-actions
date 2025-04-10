@@ -12,8 +12,7 @@ runs:
   steps:
     - name: TODO checker
       run: |
-        Green="\e[32m"
         if grep -rnw --exclude-dir={${{inputs.exclude}}} --include='*.py' --include='*.js' --include='*.jsx' -e "TODO"; then
-          echo "${Green}TOOD found, make sure${Green}"
+          echo "TOOD found, make sure!!!"
         fi
       shell: bash
