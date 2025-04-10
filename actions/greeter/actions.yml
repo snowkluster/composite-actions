@@ -1,0 +1,15 @@
+name: greeter
+description: Say hello to the World
+
+inputs:
+  who-to-greet:
+    required: false
+    default: World
+    description: var to store name
+
+runs:
+  using: composite
+  steps:
+    - name: Greeter says hello
+      run: echo "hello ${{inputs.who-to-greet}}"
+      shell: bash

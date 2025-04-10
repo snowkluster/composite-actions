@@ -1,0 +1,19 @@
+name: TODO
+description: Check if the commit has TODO and count them
+
+inputs:
+  exclude:
+    required: false
+    description: list of directories to exclude separated by comma
+    default: "env,venv"
+
+runs:
+  using: composite
+  steps:
+    - name: TODO checker
+      run: |
+        Green="\e[32m"
+        if grep -rnw --exclude-dir={${{inputs.exclude}}} --include='*.py' --include='*.js' --include='*.jsx' -e "TODO"; then
+          echo "${Green}TOOD found, make sure${Green}"
+        fi
+      shell: bash
